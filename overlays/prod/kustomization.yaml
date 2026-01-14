@@ -8,7 +8,7 @@ replicas:
     count: 3
 images:
   - name: lordofthejars/pacman-kikd
-    newTag: v1.0.0
+    newTag: latest
 labels:
   - pairs:
       environment: prod
