@@ -1,14 +1,13 @@
 apiVersion: v1
 kind: Service
-metadata: 
-  labels:
-    app.kubernetes.io/name: pacman-kikd
+metadata:
   name: pacman-kikd
   namespace: pacman
-spec: 
-  ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
+spec:
+  type: NodePort
   selector:
     app.kubernetes.io/name: pacman-kikd
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
