@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: staging
-bases:
+resources:
   - ../../base
 replicas:
   - name: pacman-kikd
@@ -9,7 +9,13 @@ replicas:
 images:
   - name: lordofthejars/pacman-kikd
     newTag: v1.0.0
-commonLabels:
-  environment: staging
-patchesStrategicMerge:
-  - deployment-patch.yaml
+labels:
+  - pairs:
+      environment: staging
+patches:
+  - path: deployment-patch.yaml
+    target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: pacman-kikd
