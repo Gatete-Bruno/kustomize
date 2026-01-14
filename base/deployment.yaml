@@ -16,9 +16,19 @@ spec:
         app.kubernetes.io/name: pacman-kikd
     spec:
       containers:
-        - image: lordofthejars/pacman-kikd:1.0.1
+        - image: lordofthejars/pacman-kikd:1.0.0
           imagePullPolicy: Always
           name: pacman-kikd
+          env:
+            - name: ENVIRONMENT
+              value: "base"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
           ports:
             - containerPort: 8080
               name: http

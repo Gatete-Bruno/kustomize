@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pacman-kikd
+spec:
+  template:
+    spec:
+      containers:
+        - name: pacman-kikd
+          env:
+            - name: ENVIRONMENT
+              value: "dev"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
